@@ -3,26 +3,27 @@
 $sprites: sprite-map("logo/*.png");
 $sprites-img: sprite-url($sprites);
 @mixin sprite-background($name) {
-   background-image: $sprites-img;
-   background-repeat: no-repeat;
-   display: inline-block;
-   height: image-height(sprite-file($sprites, $name));
-   width: image-width(sprite-file($sprites, $name));
-   background-position: sprite-position($sprites, $name);
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: image-height(sprite-file($sprites, $name));
+  width: image-width(sprite-file($sprites, $name));
+  background-position: sprite-position($sprites, $name);
 }
 @mixin sprite-s-background($name) {
-   background-image: $sprites-img;
-   background-repeat: no-repeat;
-   display: inline-block;
-   height: image-height(sprite-file($sprites, $name))/2;
-   $w: image-width(sprite-file($sprites, $name))/2;
-   width: $w;
-   $y: round(nth(sprite-position($sprites, $name), 2)/2);
-   background-position: 0 $y;
-   @include background-size(238px, auto);
+  height: image-height(sprite-file($sprites, $name))/2;
+  $w: image-width(sprite-file($sprites, $name))/2;
+  width: $w;
+  $y: round(nth(sprite-position($sprites, $name), 2)/2);
+  background-position: 0 $y;
+  @include background-size(238px, auto);
 }
 
 // クラス出力
+.logo-sprite {
+  background-image: $sprites-img;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
 @each $sprite-name in sprite-names($sprites) {
   .logo-#{$sprite-name} {
     @include sprite-background($sprite-name);
