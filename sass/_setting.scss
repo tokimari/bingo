@@ -1,22 +1,3 @@
-@import "compass";
-// sprites
-$sprites: sprite-map("logo/*.png");
-$sprites-img: sprite-url($sprites);
-@mixin sprite-background($name) {
-   background-image: $sprites-img;
-   background-repeat: no-repeat;
-   display: inline-block;
-   height: image-height(sprite-file($sprites, $name)) / 2;
-   width: image-width(sprite-file($sprites, $name)) / 2;
-   $ypos: round(nth(sprite-position($sprites, $name), 2) / 2);
-   background-position: 0 $ypos;
-   @include background-size(178px auto);
-}
-
-.logo-handlebars { @include sprite-background(handlebars); }
-.logo-sass { @include sprite-background(sass); }
-.logo-iterm2 { @include sprite-background(iterm2); }
-
 * {
   margin: 0;
   padding: 0;

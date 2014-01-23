@@ -48,7 +48,7 @@ var MainView = BaseView.extend({
         rd = Math.floor(Math.random() * arr.length);
     this.hit = rd;
     $('#x-disp-logo').attr('class', 'logo-' + arr[rd].url);
-    this.logoTimer = setTimeout(_.bind(this.roulette, this), 100);
+    this.logoTimer = setTimeout(_.bind(this.roulette, this), 200);
   },
 
   /**
@@ -67,8 +67,8 @@ var MainView = BaseView.extend({
    * ヒットしたロゴの描画
    */
   renderHitLogo: function(logo) {
-    var li = '<li class="logo-' + logo.url + '"></li>';
-    $('.x-show-list').append(li);
+    var li = '<li class="logo-s-' + logo.url + '"></li>';
+    $('.x-show-list').prepend(li);
     this.nameTimer = setTimeout(function() {
       $('#x-disp-msg').text(logo.name);
     }, 5000);
