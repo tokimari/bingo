@@ -150,9 +150,9 @@ var MainView = BaseView.extend({
   },
 
   /**
-   * @method setElement
+   * @method initialize
    */
-  onSetElement: function() {
+  initialize: function() {
     console.log('set MainView', this);
     $.get('/clear');
   },

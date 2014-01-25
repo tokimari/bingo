@@ -29,7 +29,6 @@ h1 {
 .side-box {
   width: 200px;
   display: table-cell;
-  vertical-align: middle;
   padding: 20px;
   h3 {
     display: block;
@@ -42,9 +41,12 @@ h1 {
   display: table-cell;
   vertical-align: middle;
 }
+.btn-group {
+  height: 90px;
+}
 .btn {
   @include border-radius(5px);
-  width: 100%;
+  width: 200px;
   display: block;
   padding-bottom: 5px;
   text-decoration: none;
