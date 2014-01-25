@@ -18,11 +18,6 @@ $sprites: sprite-map("logo/*.png");
 }
 
 // クラス出力
-.logo-sprite {
-  background-image: sprite-url($sprites);
-  background-repeat: no-repeat;
-  display: inline-block;
-}
 @each $sprite-name in sprite-names($sprites) {
   .logo-#{$sprite-name} {
     @include sprite-background($sprite-name);

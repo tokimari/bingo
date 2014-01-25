@@ -7,20 +7,20 @@ var MainView = BaseView.extend({
   /**
    * @param
    */
-  targetArr: logoArr,
   timer: null,
-  hit: null,
+  hitId: null,
+  cnt: 0,
   isProcessing: false,
   msg: {
-    start: 'Let\'s Bingo ٩( \'ω\' )و',
-    end: 'もうないよ ٩( \'ω\' )و<br>13 developperからチョコをあげるよ'
+    start: '',
+    end: 'null<br>٩( \'ω\' )و'
   },
 
   /**
    * @method initialize
    */
   initialize: function() {
-    console.log('set MainView', this);
+    console.log('set MainView');
     $.get('/clear');
   },
 
@@ -29,6 +29,7 @@ var MainView = BaseView.extend({
    * ルーレットするかを判定し、開始
    */
   startRoulette: function() {
+    console.log('start roulette', this.cnt);
     var msgEl = $('#x-disp-msg');
     if(!this.yetVal()) {
       msgEl.html(this.msg.end);
@@ -42,24 +43,37 @@ var MainView = BaseView.extend({
    * @method roulette
    */
   roulette: function() {
-    console.log('start roulette');
-    var arr = this.targetArr,
-        rd = Math.floor(Math.random() * arr.length);
-    this.hit = rd;
-    $('#x-disp-logo').attr('class', 'logo-sprite logo-' + arr[rd].url);
+    console.log('roulette');
+    var rd = this.getRandomNum();
+    $('#x-disp-logo').attr('class', 'logo-sprite logo-' + logoObj[rd].url);
+    console.log(rd, logoObj[rd]);
+    this.hitId = rd;
     this.timer = setTimeout(_.bind(this.roulette, this), 200);
+  },
+
+  /**
+   * @method getRandomNum
+   * @return {Number} rd Random Number not Hited.
+   */
+  getRandomNum: function() {
+    var rd = null;
+    do {
+      rd = Math.floor(Math.random() * 75);
+    } while (logoObj[rd].hit);
+    return rd;
   },
 
   /**
    * @method endRoulette
    */
   stopRoulette: function() {
-    console.log('end roulette');
+    console.log('stop roulette');
     clearTimeout(this.timer);
-    if(!this.yetVal()) { return; }
-    this.onSubmit(this.hit);
-    this.renderHitLogo(this.targetArr[this.hit]);
-    this.targetArr.splice(this.hit, 1);
+    if(!this.yetVal()) { console.log('returnするよ'); return; }
+    this.onSubmit(this.hitId);
+    this.renderHitLogo(logoObj[this.hitId]);
+    logoObj[this.hitId].hit = true;
+    this.cnt ++;
   },
 
   /**
@@ -67,6 +81,7 @@ var MainView = BaseView.extend({
    * ヒットしたロゴの描画
    */
   renderHitLogo: function(logo) {
+     console.log(logo);
     var li = '<li class="logo-sprite logo-s-' + logo.url + '"></li>';
     $('.x-show-list').prepend(li);
     $('#x-disp-msg').text(logo.name);
@@ -79,8 +94,7 @@ var MainView = BaseView.extend({
    * return {Boolean}
    */
   yetVal: function() {
-    console.log('ビンゴをつづける：', this.targetArr.length !== 1);
-    return this.targetArr.length !== 1;
+    return ( 75 - this.cnt ) > 1;
   },
   
   /**

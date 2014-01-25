@@ -3,83 +3,83 @@
 ;/**
 *@modelLogoArr
 */
-var logoArr=[
-{ url: 'agilityjs',        name :'Agility.js'                          }, 
-{ url: 'ajax',             name :'Ajax'                                }, 
-{ url: 'alfred',           name :'Alfred'                              }, 
-{ url: 'ameba',            name :'Ameba'                               }, 
-{ url: 'android',          name :'Android'                             }, 
-{ url: 'angular',          name :'AngularJS'                           }, 
-{ url: 'backbone',         name :'Backbone.js'                         }, 
-{ url: 'batman',           name :'BATMAN.JS'                           }, 
-{ url: 'bower',            name :'Bower'                               }, 
-{ url: 'cappuccino',       name :'Cappuccino'                          }, 
-{ url: 'casper',           name :'CasperJS'                            }, 
-{ url: 'charles',          name :'Charles'                             }, 
-{ url: 'chrome',           name :'Google Chrome'                       }, 
-{ url: 'coffeescript',     name :'CoffeeScript'                        }, 
-{ url: 'compass-avatar',   name :'compass-avatar'                      }, 
-{ url: 'createjs',         name :'createjs'                            }, 
-{ url: 'css3',             name :'CSS3'                                }, 
-{ url: 'dart',             name :'Dart'                                }, 
-{ url: 'dash',             name :'Dash'                                }, 
-{ url: 'emacs',            name :'Emacs'                               }, 
-{ url: 'ember',            name :'Ember.js'                            }, 
-{ url: 'emmet',            name :'Emmet'                               }, 
-{ url: 'enchant',          name :'enchant.js'                          }, 
-{ url: 'finder',           name :'Finder'                              }, 
-{ url: 'firefox',          name :'Direfox'                             }, 
-{ url: 'git',              name :'Git'                                 }, 
-{ url: 'google_developer', name :'Google Developers'                   }, 
-{ url: 'growl',            name :'Growl'                               }, 
-{ url: 'grunt',            name :'Grunt'                               }, 
-{ url: 'gwt',              name :'Google Webkit Toolkit'               }, 
-{ url: 'haml',             name :'Haml.'                               }, 
-{ url: 'handlebars',       name :'Handlebars'                          }, 
-{ url: 'html5',            name :'HTML5'                               }, 
-{ url: 'ie9',              name :'Internet Explorer 9'                 }, 
-{ url: 'image_alpha',      name :'ImageAlpha'                          }, 
-{ url: 'image_optim',      name :'ImageOptim'                          }, 
-{ url: 'ios7',             name :'iOS 7'                               }, 
-{ url: 'jasmine',          name :'Jasmine'                             }, 
-{ url: 'jenkins',          name :'Jenkins'                             }, 
-{ url: 'jquery',           name :'jQuery'                              }, 
-{ url: 'js',               name :'JavaScript'                          }, 
-{ url: 'json',             name :'JSON'                                }, 
-{ url: 'knockout',         name :'Knockout.js'                         }, 
-{ url: 'less',             name :'LESS'                                }, 
-{ url: 'mocha',            name :'Mocha'                               }, 
-{ url: 'nodejs',           name :'node.js'                             }, 
-{ url: 'octocat',          name :'Octocat'                             }, 
-{ url: 'phantom',          name :'PhantomJS'                           }, 
-{ url: 'prototype',        name :'Prototype.js'                        }, 
-{ url: 'qunit',            name :'QUnit'                               }, 
-{ url: 'redmine',          name :'Redmine'                             }, 
-{ url: 'require',          name :'RequireJS'                           }, 
-{ url: 'safari',           name :'Safari'                              }, 
-{ url: 'sammyjs',          name :'Sammy.js'                            }, 
-{ url: 'sass',             name :'Sass'                                }, 
-{ url: 'sencha',           name :'Sencha'                              }, 
-{ url: 'sourcetree',       name :'SourceTree'                          }, 
-{ url: 'sprout_core',      name :'SproutCore'                          }, 
-{ url: 'stackoverflow',    name :'Stack Overflow'                      }, 
-{ url: 'stylus',           name :'Stylus'                              }, 
-{ url: 'sublime',          name :'Sublime Text'                        }, 
-{ url: 'titanium',         name :'Titanium'                            }, 
-{ url: 'tower',            name :'Tower'                               }, 
-{ url: 'typescript',       name :'TypeScript'                          }, 
-{ url: 'underscore',       name :'Underscore.js'                       }, 
-{ url: 'vagrant',          name :'Vagrant'                             }, 
-{ url: 'vim',              name :'Vim'                                 }, 
-{ url: 'virtualbox',       name :'VirtualBox'                          }, 
-{ url: 'webstorm',         name :'WebStorm'                            }, 
-{ url: 'windows8',         name :'Windows 8'                           }, 
-{ url: 'wink_toolkit',     name :'Wink Toolkit'                        }, 
-{ url: 'wordpress',        name :'WordPress'                           }, 
-{ url: 'yeoman',           name :'Yeoman'                              }, 
-{ url: 'yui3',             name :'Yahoo! User Interface Library Ver.3' }, 
-{ url: 'zepto',            name :'Zepto.js'                            }
-];
+var logoObj = {
+  0:  { url: 'agilityjs',        name :'Agility.js'                         , hit: false }, 
+  1:  { url: 'ajax',             name :'Ajax'                               , hit: false }, 
+  2:  { url: 'alfred',           name :'Alfred'                             , hit: false }, 
+  3:  { url: 'ameba',            name :'Ameba'                              , hit: false }, 
+  4:  { url: 'android',          name :'Android'                            , hit: false }, 
+  5:  { url: 'angular',          name :'AngularJS'                          , hit: false }, 
+  6:  { url: 'backbone',         name :'Backbone.js'                        , hit: false }, 
+  7:  { url: 'batman',           name :'BATMAN.JS'                          , hit: false }, 
+  8:  { url: 'bower',            name :'Bower'                              , hit: false }, 
+  9:  { url: 'cappuccino',       name :'Cappuccino'                         , hit: false }, 
+  10: { url: 'casper',           name :'CasperJS'                           , hit: false }, 
+  11: { url: 'charles',          name :'Charles'                            , hit: false }, 
+  12: { url: 'chrome',           name :'Google Chrome'                      , hit: false }, 
+  13: { url: 'coffeescript',     name :'CoffeeScript'                       , hit: false }, 
+  14: { url: 'compass-avatar',   name :'compass-avatar'                     , hit: false }, 
+  15: { url: 'createjs',         name :'createjs'                           , hit: false }, 
+  16: { url: 'css3',             name :'CSS3'                               , hit: false }, 
+  17: { url: 'dart',             name :'Dart'                               , hit: false }, 
+  18: { url: 'dash',             name :'Dash'                               , hit: false }, 
+  19: { url: 'emacs',            name :'Emacs'                              , hit: false }, 
+  20: { url: 'ember',            name :'Ember.js'                           , hit: false }, 
+  21: { url: 'emmet',            name :'Emmet'                              , hit: false }, 
+  22: { url: 'enchant',          name :'enchant.js'                         , hit: false }, 
+  23: { url: 'finder',           name :'Finder'                             , hit: false }, 
+  24: { url: 'firefox',          name :'Direfox'                            , hit: false }, 
+  25: { url: 'git',              name :'Git'                                , hit: false }, 
+  26: { url: 'google_developer', name :'Google Developers'                  , hit: false }, 
+  27: { url: 'growl',            name :'Growl'                              , hit: false }, 
+  28: { url: 'grunt',            name :'Grunt'                              , hit: false }, 
+  29: { url: 'gwt',              name :'Google Webkit Toolkit'              , hit: false }, 
+  30: { url: 'haml',             name :'Haml.'                              , hit: false }, 
+  31: { url: 'handlebars',       name :'Handlebars'                         , hit: false }, 
+  32: { url: 'html5',            name :'HTML5'                              , hit: false }, 
+  33: { url: 'ie9',              name :'Internet Explorer 9'                , hit: false }, 
+  34: { url: 'image_alpha',      name :'ImageAlpha'                         , hit: false }, 
+  35: { url: 'image_optim',      name :'ImageOptim'                         , hit: false }, 
+  36: { url: 'ios7',             name :'iOS 7'                              , hit: false }, 
+  37: { url: 'jasmine',          name :'Jasmine'                            , hit: false }, 
+  38: { url: 'jenkins',          name :'Jenkins'                            , hit: false }, 
+  39: { url: 'jquery',           name :'jQuery'                             , hit: false }, 
+  40: { url: 'js',               name :'JavaScript'                         , hit: false }, 
+  41: { url: 'json',             name :'JSON'                               , hit: false }, 
+  42: { url: 'knockout',         name :'Knockout.js'                        , hit: false }, 
+  43: { url: 'less',             name :'LESS'                               , hit: false }, 
+  44: { url: 'mocha',            name :'Mocha'                              , hit: false }, 
+  45: { url: 'nodejs',           name :'node.js'                            , hit: false }, 
+  46: { url: 'octocat',          name :'Octocat'                            , hit: false }, 
+  47: { url: 'phantom',          name :'PhantomJS'                          , hit: false }, 
+  48: { url: 'prototype',        name :'Prototype.js'                       , hit: false }, 
+  49: { url: 'qunit',            name :'QUnit'                              , hit: false }, 
+  50: { url: 'redmine',          name :'Redmine'                            , hit: false }, 
+  51: { url: 'require',          name :'RequireJS'                          , hit: false }, 
+  52: { url: 'safari',           name :'Safari'                             , hit: false }, 
+  53: { url: 'sammyjs',          name :'Sammy.js'                           , hit: false }, 
+  54: { url: 'sass',             name :'Sass'                               , hit: false }, 
+  55: { url: 'sencha',           name :'Sencha'                             , hit: false }, 
+  56: { url: 'sourcetree',       name :'SourceTree'                         , hit: false }, 
+  57: { url: 'sprout_core',      name :'SproutCore'                         , hit: false }, 
+  58: { url: 'stackoverflow',    name :'Stack Overflow'                     , hit: false }, 
+  59: { url: 'stylus',           name :'Stylus'                             , hit: false }, 
+  60: { url: 'sublime',          name :'Sublime Text'                       , hit: false }, 
+  61: { url: 'titanium',         name :'Titanium'                           , hit: false }, 
+  62: { url: 'tower',            name :'Tower'                              , hit: false }, 
+  63: { url: 'typescript',       name :'TypeScript'                         , hit: false }, 
+  64: { url: 'underscore',       name :'Underscore.js'                      , hit: false }, 
+  65: { url: 'vagrant',          name :'Vagrant'                            , hit: false }, 
+  66: { url: 'vim',              name :'Vim'                                , hit: false }, 
+  67: { url: 'virtualbox',       name :'VirtualBox'                         , hit: false }, 
+  68: { url: 'webstorm',         name :'WebStorm'                           , hit: false }, 
+  69: { url: 'windows8',         name :'Windows 8'                          , hit: false }, 
+  70: { url: 'wink_toolkit',     name :'Wink Toolkit'                       , hit: false }, 
+  71: { url: 'wordpress',        name :'WordPress'                          , hit: false }, 
+  72: { url: 'yeoman',           name :'Yeoman'                             , hit: false }, 
+  73: { url: 'yui3',             name :'Yahoo! User Interface Library Ver.3', hit: false }, 
+  74: { url: 'zepto',            name :'Zepto.js'                           , hit: false }
+}
 
 ;/**
  * @class BaseView
@@ -140,20 +140,20 @@ var MainView = BaseView.extend({
   /**
    * @param
    */
-  targetArr: logoArr,
   timer: null,
-  hit: null,
+  hitId: null,
+  cnt: 0,
   isProcessing: false,
   msg: {
-    start: 'Let\'s Bingo ٩( \'ω\' )و',
-    end: 'もうないよ ٩( \'ω\' )و<br>13 developperからチョコをあげるよ'
+    start: '',
+    end: 'null<br>٩( \'ω\' )و'
   },
 
   /**
    * @method initialize
    */
   initialize: function() {
-    console.log('set MainView', this);
+    console.log('set MainView');
     $.get('/clear');
   },
 
@@ -162,6 +162,7 @@ var MainView = BaseView.extend({
    * ルーレットするかを判定し、開始
    */
   startRoulette: function() {
+    console.log('start roulette', this.cnt);
     var msgEl = $('#x-disp-msg');
     if(!this.yetVal()) {
       msgEl.html(this.msg.end);
@@ -175,24 +176,37 @@ var MainView = BaseView.extend({
    * @method roulette
    */
   roulette: function() {
-    console.log('start roulette');
-    var arr = this.targetArr,
-        rd = Math.floor(Math.random() * arr.length);
-    this.hit = rd;
-    $('#x-disp-logo').attr('class', 'logo-sprite logo-' + arr[rd].url);
+    console.log('roulette');
+    var rd = this.getRandomNum();
+    $('#x-disp-logo').attr('class', 'logo-sprite logo-' + logoObj[rd].url);
+    console.log(rd, logoObj[rd]);
+    this.hitId = rd;
     this.timer = setTimeout(_.bind(this.roulette, this), 200);
+  },
+
+  /**
+   * @method getRandomNum
+   * @return {Number} rd Random Number not Hited.
+   */
+  getRandomNum: function() {
+    var rd = null;
+    do {
+      rd = Math.floor(Math.random() * 75);
+    } while (logoObj[rd].hit);
+    return rd;
   },
 
   /**
    * @method endRoulette
    */
   stopRoulette: function() {
-    console.log('end roulette');
+    console.log('stop roulette');
     clearTimeout(this.timer);
-    if(!this.yetVal()) { return; }
-    this.onSubmit(this.hit);
-    this.renderHitLogo(this.targetArr[this.hit]);
-    this.targetArr.splice(this.hit, 1);
+    if(!this.yetVal()) { console.log('returnするよ'); return; }
+    this.onSubmit(this.hitId);
+    this.renderHitLogo(logoObj[this.hitId]);
+    logoObj[this.hitId].hit = true;
+    this.cnt ++;
   },
 
   /**
@@ -200,6 +214,7 @@ var MainView = BaseView.extend({
    * ヒットしたロゴの描画
    */
   renderHitLogo: function(logo) {
+     console.log(logo);
     var li = '<li class="logo-sprite logo-s-' + logo.url + '"></li>';
     $('.x-show-list').prepend(li);
     $('#x-disp-msg').text(logo.name);
@@ -212,8 +227,7 @@ var MainView = BaseView.extend({
    * return {Boolean}
    */
   yetVal: function() {
-    console.log('ビンゴをつづける：', this.targetArr.length !== 1);
-    return this.targetArr.length !== 1;
+    return ( 75 - this.cnt ) > 1;
   },
   
   /**

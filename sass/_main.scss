@@ -31,10 +31,11 @@ h1 {
   display: table-cell;
   padding: 20px;
   h3 {
-    display: block;
-    margin-bottom: 20px;
-    font-size: 42px;
-    line-height: 42px;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 38px;
+    line-height: 40px;
+    height: 93px;
   }
 }
 .disp-box {
@@ -84,6 +85,7 @@ h1 {
       margin: 3px;
       list-style: none;
       vertical-align: middle;
+      display: inline-block;
     }
   }
 }
