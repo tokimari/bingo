@@ -9,7 +9,6 @@ var BaseView = Backbone.View.extend({
     'touchend .x-btn': 'onTouchEnd',
     'click .x-start-btn': 'onStart',
     'click .x-stop-btn': 'onStop',
-    'click .x-reset-btn': 'onReset'
   },
 
   /**

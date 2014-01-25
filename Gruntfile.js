@@ -1,18 +1,25 @@
 module.exports = function(grunt) {
   grunt.initConfig({
-    compass: {                  // Task
-      dist: {                   // Target
-        options: {              // Target options
+    compass: {
+      dist: {
+        options: {
           sassDir: 'sass',
           cssDir: 'css',
           environment: 'production'
         }
       },
+      sprite: {
+        options: {
+          sassDir: 'sass/sprite',
+          cssDir: 'css',
+          environment: 'production'
+        }
+      }
     },
     cssmin: {
       compress: {
         files: {
-          'assets/app.min.css': ['css/app.css']
+          'assets/app.min.css': ['css/app.css', 'css/sprite.css']
         }
       }
     },
@@ -27,7 +34,7 @@ module.exports = function(grunt) {
     },
     watch: {
       files: ['sass/*.scss', 'js/*.js'],
-      tasks: ['compass', 'cssmin', 'concat']
+      tasks: ['compass:dist', 'cssmin', 'concat']
     }
   });
 

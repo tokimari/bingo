@@ -21,7 +21,7 @@ var MainView = BaseView.extend({
    */
   setElement: function() {
     this.$el = $(this.el);
-    console.log('set MainView');
+    console.log('set MainView', this);
   },
 
   /**
@@ -59,6 +59,7 @@ var MainView = BaseView.extend({
     clearTimeout(this.logoTimer);
     if(!this.yetVal()) { return; }
     this.renderHitLogo(this.targetArr[this.hit]);
+    this.onSubmit(this.hit);
     this.targetArr.splice(this.hit, 1);
   },
 
@@ -84,20 +85,27 @@ var MainView = BaseView.extend({
     console.log('ビンゴをつづける：', this.targetArr.length !== 1);
     return this.targetArr.length !== 1;
   },
+  
+  onSubmit: function(no) {
 
-  /**
-   * @method onReset
-   * ビンゴ初期化
-   */
-  onReset: function() {
-    console.log('やりなおします', logoArr);
-    this.targetArr = logoArr;
-    clearTimeout(this.logoTimer);
-    clearTimeout(this.nameTimer);
-    $('#x-disp-msg').text(this.msg.start);
-    $('#x-disp-logo').html('');
-    $('.x-show-list').html('');
-    this.toggleBtn();
+    console.log('onSubmit', no);
+/*    $.ajax({
+      type: 'POST',
+      url: 'http://localhost:3000/bingo/',
+      data: no,
+      success: _.bind(this.onSuccess, this),
+      error: _.bind(this.onFailure, this),
+    });*/
+
+      $.post('http://localhost:3000/bingo/' + no);
+  },
+
+  onSuccess: function() {
+    console.log('onSuccess');
+  },
+
+  onFailure: function() {
+    console.log('onFailure');
   }
 
 });

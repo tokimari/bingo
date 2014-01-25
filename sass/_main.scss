@@ -33,15 +33,15 @@ h1 {
   display: block;
 }
 .btn-group {
-  margin-left: 5%;
+  text-align: center;
 }
 .btn {
   @include border-radius(5px);
-  width: 40%;
+  width: 50%;
   display: block;
   padding-bottom: 5px;
+  margin: 0 25%;
   text-decoration: none;
-  margin: 0 0 0 5%;
   float: left;
   &.btn-start {
     background: $color-pink-d;
@@ -50,13 +50,6 @@ h1 {
   &.btn-stop {
     background: $color-blue-d;
     .btn-top { background: $color-blue-l; }
-  }
-  &.btn-reset {
-    background: $color-gray-d;
-    .btn-top {
-      background: $color-gray-l;
-      color: $color-gray-d;
-    }
   }
   .btn-top {
     @include border-radius(5px);
