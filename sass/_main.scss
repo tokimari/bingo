@@ -25,22 +25,21 @@ h1 {
   text-align: center;
   margin-top: 10px;
 }
+.side-box {
+  width: 40%;
+  margin: 50px auto;
+}
 .disp-box {
-  height: 180px;
-  padding: 20px;
+  width: 60%;
 }
-.disp-box h3 {
+.side-box h3 {
   display: block;
-}
-.btn-group {
-  text-align: center;
 }
 .btn {
   @include border-radius(5px);
-  width: 50%;
+  width: 100%;
   display: block;
   padding-bottom: 5px;
-  margin: 0 25%;
   text-decoration: none;
   float: left;
   &.btn-start {
@@ -53,8 +52,8 @@ h1 {
   }
   .btn-top {
     @include border-radius(5px);
-    height: 50px;
-    line-height: 50px;
+    height: 80px;
+    line-height: 80px;
     font-size: 30px;
     font-weight: bold;
     color: $color-white;

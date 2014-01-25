@@ -227,8 +227,7 @@ var MainView = BaseView.extend({
 
     $.ajax({
       type: 'POST',
-      url: 'http://localhost:3000/bingo/',
-      data: no,
+      url: 'http://localhost:3000/bingo/' + no,
       success: _.bind(this.onSuccess, this),
       error: _.bind(this.onFailure, this),
       complete: _.bind(this.onComplete, this)
