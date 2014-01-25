@@ -154,6 +154,7 @@ var MainView = BaseView.extend({
    */
   onSetElement: function() {
     console.log('set MainView', this);
+    $.get('/clear');
   },
 
   /**
@@ -227,7 +228,7 @@ var MainView = BaseView.extend({
 
     $.ajax({
       type: 'POST',
-      url: 'http://localhost:3000/bingo/' + no,
+      url: '/bingo/' + no,
       success: _.bind(this.onSuccess, this),
       error: _.bind(this.onFailure, this),
       complete: _.bind(this.onComplete, this)
