@@ -8,9 +8,9 @@ var MainView = BaseView.extend({
    * @param
    */
   targetArr: logoArr,
-  logoTimer: null,
-  nameTimer: null,
+  timer: null,
   hit: null,
+  isProcessing: false,
   msg: {
     start: 'Let\'s Bingo ٩( \'ω\' )و',
     end: 'もうないよ ٩( \'ω\' )و<br>13 developperからチョコをあげるよ'
@@ -19,8 +19,7 @@ var MainView = BaseView.extend({
   /**
    * @method setElement
    */
-  setElement: function() {
-    this.$el = $(this.el);
+  onSetElement: function() {
     console.log('set MainView', this);
   },
 
@@ -30,7 +29,6 @@ var MainView = BaseView.extend({
    */
   startRoulette: function() {
     var msgEl = $('#x-disp-msg');
-    clearTimeout(this.nameTimer);
     if(!this.yetVal()) {
       msgEl.html(this.msg.end);
       return;
@@ -48,7 +46,7 @@ var MainView = BaseView.extend({
         rd = Math.floor(Math.random() * arr.length);
     this.hit = rd;
     $('#x-disp-logo').attr('class', 'logo-sprite logo-' + arr[rd].url);
-    this.logoTimer = setTimeout(_.bind(this.roulette, this), 200);
+    this.timer = setTimeout(_.bind(this.roulette, this), 200);
   },
 
   /**
@@ -56,10 +54,10 @@ var MainView = BaseView.extend({
    */
   stopRoulette: function() {
     console.log('end roulette');
-    clearTimeout(this.logoTimer);
+    clearTimeout(this.timer);
     if(!this.yetVal()) { return; }
-    this.renderHitLogo(this.targetArr[this.hit]);
     this.onSubmit(this.hit);
+    this.renderHitLogo(this.targetArr[this.hit]);
     this.targetArr.splice(this.hit, 1);
   },
 
@@ -70,9 +68,7 @@ var MainView = BaseView.extend({
   renderHitLogo: function(logo) {
     var li = '<li class="logo-sprite logo-s-' + logo.url + '"></li>';
     $('.x-show-list').prepend(li);
-    this.nameTimer = setTimeout(function() {
-      $('#x-disp-msg').text(logo.name);
-    }, 5000);
+    $('#x-disp-msg').text(logo.name);
     return;
   },
 
@@ -86,26 +82,48 @@ var MainView = BaseView.extend({
     return this.targetArr.length !== 1;
   },
   
+  /**
+   * @method onSubmit
+   * サーバに番号を送信
+   * @param {Number} no Hit Number.
+   */
   onSubmit: function(no) {
 
     console.log('onSubmit', no);
-/*    $.ajax({
+    if (this.isProcessing) { return; }
+
+    $.ajax({
       type: 'POST',
       url: 'http://localhost:3000/bingo/',
       data: no,
       success: _.bind(this.onSuccess, this),
       error: _.bind(this.onFailure, this),
-    });*/
+      complete: _.bind(this.onComplete, this)
+    });
 
-      $.post('http://localhost:3000/bingo/' + no);
+    this.isProcessing = true;
   },
 
+  /**
+   * @method onSuccess
+   */
   onSuccess: function() {
     console.log('onSuccess');
   },
 
+  /**
+   * @method onFailure
+   */
   onFailure: function() {
     console.log('onFailure');
+  },
+
+  /**
+   * @method onComplete
+   */
+  onComplete: function() {
+    console.log('onComplete');
+    this.isProcessing = false;
   }
 
 });

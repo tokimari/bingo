@@ -1,4 +1,5 @@
 module.exports = function(grunt) {
+
   grunt.initConfig({
     compass: {
       dist: {
@@ -10,8 +11,9 @@ module.exports = function(grunt) {
       },
       sprite: {
         options: {
+          imageDir: 'img',
           sassDir: 'sass/sprite',
-          cssDir: 'css',
+          cssDir: 'css/',
           environment: 'production'
         }
       }
@@ -36,7 +38,12 @@ module.exports = function(grunt) {
       files: ['sass/*.scss', 'js/*.js'],
       tasks: ['compass:dist', 'cssmin', 'concat']
     }
+    
   });
+
+  grunt.registerTask('default', [
+    'compass:sprite', 'compass:dist', 'cssmin', 'concat'
+  ]);
 
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
