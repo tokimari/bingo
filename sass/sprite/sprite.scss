@@ -1,28 +1,29 @@
 @import "compass";
 @import "logo/*.png";
 $sprites: sprite-map("logo/*.png");
-@mixin sprite-background($name) {
-  background-repeat: no-repeat;
-  display: inline-block;
-  height: image-height(sprite-file($sprites, $name));
-  width: image-width(sprite-file($sprites, $name));
-  background-position: sprite-position($sprites, $name);
-}
-@mixin sprite-s-background($name) {
-  height: image-height(sprite-file($sprites, $name))/2;
-  $w: image-width(sprite-file($sprites, $name))/2;
-  width: $w;
-  $y: round(nth(sprite-position($sprites, $name), 2)/2);
-  background-position: 0 $y;
-  @include background-size(238px, auto);
+@mixin sprite-background($name, $rate) {
+  $_w: image-width(sprite-file($sprites, $name)) / $rate;
+  $_h: image-height(sprite-file($sprites, $name)) / $rate;
+  width: $_w;
+  height: $_h;
+  $_y: round(nth(sprite-position($sprites, $name), 2) / $rate);
+  background-position: 0 $_y;
+  $img_w: round(image-width('logo.png') / $rate);
+  @include background-size($img_w, auto);
 }
 
 // クラス出力
 @each $sprite-name in sprite-names($sprites) {
   .logo-#{$sprite-name} {
-    @include sprite-background($sprite-name);
+    display: inline-block;
+    @include sprite-background($sprite-name, 1);
   }
   .logo-s-#{$sprite-name} {
-    @include sprite-s-background($sprite-name);
+    display: inline-block;
+    @include sprite-background($sprite-name, 2);
+  }
+  .logo-ss-#{$sprite-name} {
+    display: inline-block;
+    @include sprite-background($sprite-name, 4);
   }
 }
