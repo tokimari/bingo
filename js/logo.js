@@ -26,7 +26,7 @@ var logoObj = {
   21: { url: 'emmet',            name :'Emmet'                              , hit: false }, 
   22: { url: 'enchant',          name :'enchant.js'                         , hit: false }, 
   23: { url: 'finder',           name :'Finder'                             , hit: false }, 
-  24: { url: 'firefox',          name :'Direfox'                            , hit: false }, 
+  24: { url: 'firefox',          name :'Firefox'                            , hit: false }, 
   25: { url: 'git',              name :'Git'                                , hit: false }, 
   26: { url: 'google_developer', name :'Google Developers'                  , hit: false }, 
   27: { url: 'growl',            name :'Growl'                              , hit: false }, 

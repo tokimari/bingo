@@ -1,6 +1,6 @@
 /**
  * @class MainView
- * ルーレット部分
+ * ルーレット処理部分
  */
 var MainView = BaseView.extend({
 
@@ -10,7 +10,7 @@ var MainView = BaseView.extend({
   timer: null,
   hitId: null,
   cnt: 0,
-  isProcessing: false,
+  //isProcessing: false,  // 通信用
   msg: {
     start: '',
     end: 'null<br>٩( \'ω\' )و'
@@ -21,7 +21,7 @@ var MainView = BaseView.extend({
    */
   initialize: function() {
     console.log('set MainView');
-    $.get('/clear');
+    //$.get('/clear');  // 通信用、初期化
   },
 
   /**
@@ -31,7 +31,7 @@ var MainView = BaseView.extend({
   startRoulette: function() {
     console.log('start roulette', this.cnt);
     var msgEl = $('#x-disp-msg');
-    if(!this.yetVal()) {
+    if(!this.hasData()) {
       msgEl.html(this.msg.end);
       return;
     }
@@ -43,8 +43,8 @@ var MainView = BaseView.extend({
    * @method roulette
    */
   roulette: function() {
-    console.log('roulette');
     var rd = this.getRandomNum();
+    console.log('roulette');
     $('#x-disp-logo').attr('class', 'logo-sprite logo-' + logoObj[rd].url);
     console.log(rd, logoObj[rd]);
     this.hitId = rd;
@@ -53,7 +53,7 @@ var MainView = BaseView.extend({
 
   /**
    * @method getRandomNum
-   * @return {Number} rd Random Number not Hited.
+   * @return {Number} rd Random Number not Hit.
    */
   getRandomNum: function() {
     var rd = null;
@@ -64,13 +64,15 @@ var MainView = BaseView.extend({
   },
 
   /**
-   * @method endRoulette
+   * @method stopRoulette
    */
   stopRoulette: function() {
     console.log('stop roulette');
     clearTimeout(this.timer);
-    if(!this.yetVal()) { console.log('returnするよ'); return; }
-    this.onSubmit(this.hitId);
+    if(!this.hasData()) {
+      return;
+    }
+    //this.onSubmit(this.hitId);  // 通信用、ヒットした番号を発信
     this.renderHitLogo(logoObj[this.hitId]);
     logoObj[this.hitId].hit = true;
     this.cnt ++;
@@ -81,7 +83,7 @@ var MainView = BaseView.extend({
    * ヒットしたロゴの描画
    */
   renderHitLogo: function(logo) {
-     console.log(logo);
+    console.log(logo);
     var li = '<li class="logo-sprite logo-s-' + logo.url + '"></li>';
     $('.x-show-list').prepend(li);
     $('#x-disp-msg').text(logo.name);
@@ -89,17 +91,17 @@ var MainView = BaseView.extend({
   },
 
   /**
-   * @method yetVal
+   * @method hasData
    * 続けるロゴ数があるか
    * return {Boolean}
    */
-  yetVal: function() {
+  hasData: function() {
     return ( 75 - this.cnt ) > 1;
   },
   
   /**
    * @method onSubmit
-   * サーバに番号を送信
+   * サーバに番号を送信 結果で何かしたいとき使う
    * @param {Number} no Hit Number.
    */
   onSubmit: function(no) {
@@ -110,9 +112,9 @@ var MainView = BaseView.extend({
     $.ajax({
       type: 'POST',
       url: '/bingo/' + no,
-      success: _.bind(this.onSuccess, this),
-      error: _.bind(this.onFailure, this),
-      complete: _.bind(this.onComplete, this)
+      success: this.onSuccess,
+      error: this.onFailure,
+      complete: this.onComplete
     });
 
     this.isProcessing = true;

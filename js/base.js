@@ -1,5 +1,6 @@
 /**
  * @class BaseView
+ * Viewの土台、タップ時の見た目など
  */
 var BaseView = Backbone.View.extend({
   el: '#roulette',
@@ -37,12 +38,17 @@ var BaseView = Backbone.View.extend({
   },
 
   /**
-   * onTouchStart & onTouchEnd
-   * Change Style.
+   * @method onTouchStart
+   * Change Style on Touch start.
    */
   onTouchStart: function(e) {
     $(e.currentTarget).addClass('is-pressed');
   },
+
+  /**
+   * @method onTouchEnd
+   * Change Style on Touch end.
+   */
   onTouchEnd: function(e) {
     $(e.currentTarget).removeClass('is-pressed');
   },

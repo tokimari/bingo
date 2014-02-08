@@ -1,6 +1,8 @@
 body {
   background: $color-gray-l;
 }
+.is-hidden { display:none !important; }
+
 h1 {
   font-size: 30px;
   height: 50px;
